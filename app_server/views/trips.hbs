@@ -1,0 +1,22 @@
+{{!-- app_server/views/trips.hbs --}}
+{{!-- I pull in shared head/nav so I don't repeat markup. --}}
+{{> header}}
+
+<main class="container">
+  <h1 class="page-title">{{title}}</h1>
+
+  <div class="trip-list">
+    {{!-- I loop the trips array coming from the controller. --}}
+    {{#each trips}}
+      <article class="trip-card">
+        <h2 class="trip-title">{{this.title}}</h2>
+        <p><strong>Duration:</strong> {{this.duration}}</p>
+        <p><strong>Price:</strong> {{this.price}}</p>
+        <p>{{this.description}}</p>
+      </article>
+    {{/each}}
+  </div>
+</main>
+
+{{!-- I close out the page with a shared footer. --}}
+{{> footer}}

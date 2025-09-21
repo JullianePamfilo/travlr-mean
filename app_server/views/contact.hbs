@@ -1,0 +1,34 @@
+{{!-- app_server/views/contact.hbs --}}
+{{> header}}
+
+<main class="container">
+  <h1 class="page-title">{{title}}</h1>
+
+  <section class="trip-card">
+    <p><strong>Email:</strong> {{email}}</p>
+    <p><strong>Phone:</strong> {{phone}}</p>
+    <p><strong>Address:</strong> {{address}}</p>
+  </section>
+
+  <section class="trip-card" style="margin-top:16px">
+    <h2>Send us a message</h2>
+    {{!-- I’m not posting anywhere for this module; the form is just UI. --}}
+    <form onsubmit="event.preventDefault(); alert('Thanks! For Module 3, no backend submission is required.');">
+      <div style="margin-bottom:8px">
+        <label for="name"><strong>Name</strong></label><br />
+        <input id="name" type="text" placeholder="Your name" style="width:100%;padding:10px;border:1px solid #cdbeb2;border-radius:8px;">
+      </div>
+      <div style="margin-bottom:8px">
+        <label for="email"><strong>Email</strong></label><br />
+        <input id="email" type="email" placeholder="you@example.com" style="width:100%;padding:10px;border:1px solid #cdbeb2;border-radius:8px;">
+      </div>
+      <div style="margin-bottom:12px">
+        <label for="msg"><strong>Message</strong></label><br />
+        <textarea id="msg" rows="4" placeholder="How can we help?" style="width:100%;padding:10px;border:1px solid #cdbeb2;border-radius:8px;resize:vertical;"></textarea>
+      </div>
+      <button type="submit" style="background:#2c9688;color:#fff;border:0;border-radius:10px;padding:10px 16px;cursor:pointer;">Send</button>
+    </form>
+  </section>
+</main>
+
+{{> footer}}

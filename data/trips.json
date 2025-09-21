@@ -1,0 +1,21 @@
+[
+    {
+      "title": "Beach Paradise",
+      "duration": "7 days",
+      "price": "$999",
+      "description": "I planned this for folks who want sun, sand, and zero stress."
+    },
+    {
+      "title": "Mountain Adventure",
+      "duration": "5 days",
+      "price": "$799",
+      "description": "I packed this with hikes, viewpoints, and fresh air."
+    },
+    {
+      "title": "City Lights",
+      "duration": "3 days",
+      "price": "$499",
+      "description": "I designed this for foodies and skyline chasers."
+    }
+  ]
+  

@@ -1,23 +1,38 @@
-// I’m setting up my Express server here to serve the Travlr website.
+// app.js
+// I'm wiring up Express, Handlebars, static assets, and my MVC routes.
 
 const path = require('path');
 const express = require('express');
+const morgan = require('morgan');
+const { engine } = require('express-handlebars');
+
 const app = express();
 
-// I want everything inside "public" to load in the browser
+// I like logs in dev.
+app.use(morgan('dev'));
+
+// I expose /public so CSS/images/JS are web-accessible.
 app.use(express.static(path.join(__dirname, 'public')));
 
-// When I go to localhost:3000, this will show index.html
-app.get('/', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// I register Handlebars as my view engine.
+app.engine('hbs', engine({
+  extname: '.hbs',
+  defaultLayout: false, // tell HBS NOT to look for layouts/main.hbs
+  partialsDir: path.join(__dirname, 'app_server', 'views', 'partials'),
+  layoutsDir: false
+}));
 
-// Quick check route so I know my server is running
-app.get('/health', (_req, res) => {
-  res.json({ ok: true });
-});
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'app_server', 'views'));
 
-// I’m starting the server here
+// I mount my routes.
+const travelRouter = require('./app_server/routes/travel');
+app.use('/', travelRouter);
+
+// A tiny health check.
+app.get('/health', (req, res) => res.json({ ok: true }));
+
+// I start the server.
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Travlr server running at http://localhost:${PORT}`);
