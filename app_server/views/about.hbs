@@ -1,0 +1,22 @@
+{{!-- app_server/views/about.hbs --}}
+{{> header}}
+
+<main class="container">
+  <h1 class="page-title">{{title}}</h1>
+
+  <article class="trip-card">
+    <h2>Our Mission</h2>
+    <p>{{mission}}</p>
+
+    <h2>Our Values</h2>
+    <ul>
+      {{#each values}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
+
+    <p>We built Travlr to remove the guesswork from planning: clear durations, upfront pricing, and real descriptions so you can just enjoy the trip.</p>
+  </article>
+</main>
+
+{{> footer}}
